@@ -14,32 +14,32 @@
         <div class="all-tasks">
             <div class="inboxes">
                 <ul class="task-list">
-                    <li class="task-box active-task-box">All Tasks</li>
-                    <li class="task-box">Today</li>
-                    <li class="task-box">This Week</li>
+                    <li class="task-box active-task-box" data-box-name="all-tasks">All Tasks</li>
+                    <li class="task-box" data-box-name="today">Today</li>
+                    <li class="task-box" data-box-name="this-week">This Week</li>
                 </ul>
             </div>
             <div class="projects">
                 <h2 class="task-list-title">My Projects</h2>
             <ul class="task-list">
-                <li class="task-box">Programming</li>
-                <li class="task-box">Spanish</li>
-                <li class="task-box">Health & Fitness</li>
+                <li class="task-box" data-box-name="programming">Programming</li>
+                <li class="task-box" data-box-name="spanish">Spanish</li>
+                <li class="task-box" data-box-name="health-&-fitness">Health & Fitness</li>
             </ul>
-            <form action="">
+            <form action="" id="create-project">
                 <input 
                 type="text"
                 class="new list"
                 placeholder="new project name"
                 aria-label="new project name"
-                />
-                <button class="btn create" aria-label="create new project">+</button>
+                required name="project"/>
+                <button  class="btn create" aria-label="create new project" type="button">+</button>
             </form>
             </div>
         </div>
         <div class="todo-list">
             <div class="todo-header">
-                <h2 class="list-title">Health & Fitness</h2>
+                <h2 class="list-title">All Tasks</h2>
                 <p class="task-count">3 tasks remaining</p>
             </div>
             <div class="todo-body">
@@ -70,19 +70,21 @@
                     <!-- task 3 -->
                 </div>
                 <div class="new-task-creator">
-                    <form action="">
+                    <form action="" id="create-task" autocomplete="off">
                         <input 
                         type="text"
-                        class="new task"
+                        class="new"
                         placeholder="new task name"
                         aria-label="new task name"
+                        name="task"
+                        required
                         />
                         <button class="btn create" aria-label="create new task">+</button>
                     </form>
                 </div>
                 <div class="delete-list-tasks">
                     <button class="btn delete">clear completed tasks</button>
-                    <button class="btn delete">delete a list</button>
+                    <button class="btn delete">delete a project</button>
                 </div>
             </div>
         </div>
