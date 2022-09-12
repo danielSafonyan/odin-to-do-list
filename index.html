@@ -13,20 +13,20 @@
 
         <div class="all-tasks">
             <div class="inboxes">
-                <ul class="task-list">
-                    <li class="task-box active-task-box" data-box-name="all-tasks">All Tasks</li>
-                    <li class="task-box" data-box-name="today">Today</li>
-                    <li class="task-box" data-box-name="this-week">This Week</li>
+                <ul class="project-list">
+                    <li class="project" id="all-tasks">All Tasks</li>
+                    <!-- <li class="project" id="today">Today</li>
+                    <li class="project" id="this-week">This Week</li> -->
                 </ul>
             </div>
             <div class="projects">
-                <h2 class="task-list-title">My Projects</h2>
-            <ul class="task-list">
-                <li class="task-box" data-box-name="programming">Programming</li>
-                <li class="task-box" data-box-name="spanish">Spanish</li>
-                <li class="task-box" data-box-name="health-&-fitness">Health & Fitness</li>
+                <h2 class="project-list-title">My Projects</h2>
+            <ul class="project-list">
+                <!-- <li class="project" id="programming">Programming</li>
+                <li class="project active-project" id="spanish">Spanish</li>
+                <li class="project" id="health-&-fitness">Health & Fitness</li> -->
             </ul>
-            <form action="" id="create-project">
+            <form action="" id="create-project" autocomplete="off">
                 <input 
                 type="text"
                 class="new list"
@@ -39,8 +39,8 @@
         </div>
         <div class="todo-list">
             <div class="todo-header">
-                <h2 class="list-title">All Tasks</h2>
-                <p class="task-count">3 tasks remaining</p>
+                <h2 class="list-title">Spanish</h2>
+                <p class="task-count">Remaining Tasks: <span id="remaining-tasks">3</span></p>
             </div>
             <div class="todo-body">
                 <div class="tasks">
@@ -82,7 +82,7 @@
                 </div>
                 <div class="delete-list-tasks">
                     <button class="btn delete" id="clear-tasks">clear completed tasks</button>
-                    <button class="btn delete">delete a project</button>
+                    <button class="btn delete" id="delete-project">delete a project</button>
                 </div>
             </div>
         </div>

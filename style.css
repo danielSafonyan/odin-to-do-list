@@ -57,25 +57,25 @@
     grid-area: lists;
   }
 
-  .task-list {
+  .project-list {
     line-height: 1.7;
     font-size: 1.2rem;
     list-style-type: none;
     padding-left: 0;
   }
 
-  .task-box {
+  .project {
     cursor: pointer;
     opacity: 0.6;
     transition: opacity 250ms ease-in;
   }
 
-  .task-box:hover {
+  .project:hover {
     cursor: pointer;
     opacity: 0.9;
   }
 
- .active-task-box {
+ .active-project {
     font-weight: bold;
     letter-spacing: 0.5px;
     border-bottom: 1px solid var(--clr-dark);
