@@ -265,8 +265,6 @@ function renderAllProjects() {
     }
 }
 
-// manipulating-projects
-
 renderAllProjects();
 renderProjectTasks();
 gatherAllTasks();
