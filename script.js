@@ -298,7 +298,7 @@ function deleteProject(event) {
         return;
     }
     document.querySelector(`#${currentProject.id}`).classList.add('active-project');
-    renderProjectTasks();
+    gatherAllTasks();
 }
 
 function gatherAllTasks() {
