@@ -22,11 +22,11 @@ class Project {
     }
 }
 
-const projectObjectPrototype = {
-    title: 'Programming',
-    id: 'programming',
-    tasks: {}
-}
+// const projectObjectPrototype = {
+//     title: 'Programming',
+//     id: 'programming',
+//     tasks: {}
+// }
 
 class Task {
     constructor(taskTitle, projectID) {
