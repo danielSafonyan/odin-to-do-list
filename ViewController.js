@@ -40,7 +40,7 @@ class ViewController {
         const allTasks = document.querySelectorAll('.task');
         allTasks.forEach(task => task.remove());
     }
-    renderProjectTasks(x) {
+    renderProjectTasks() {
         this.removeAllTasks();
         const allTasks = Object.values(data.cache[this.currentProject].taskList);
         allTasks.forEach(task => this.addTask(task));
@@ -49,6 +49,13 @@ class ViewController {
     calculateRemainingTasks() {
         const numRemainingTasks = Object.values(data.cache[this.currentProject].taskList).filter(task => task.isDone == false).length;
         this.remainingTasksArea.innerText = numRemainingTasks;
+    }
+    clearCompletedTasks(completedTasks) {
+        completedTasks.forEach(
+            task => {
+                document.querySelector(`#${task.id}`).parentElement.remove();
+            }
+        )
     }
 }
 
