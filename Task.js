@@ -1,4 +1,4 @@
-import generateID from './generateID';
+import generateID from './generateID.js';
 
 export default class Task {
   constructor(taskTitle, projectID) {

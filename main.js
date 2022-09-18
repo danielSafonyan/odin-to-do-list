@@ -1,17 +1,23 @@
-import {Task, Project} from './Classes.js';
+// import Project from './Project.js';
+import Task from './Task.js';
+import view from './ViewController.js';
+import data from './DataBase.js';
 
-const DEFAULT_PROJECT = new Project('All Tasks');
+// eslint-disable-next-line prefer-const
 
-let cache = JSON.parse(localStorage.getItem('cache'));
+const newTaskForm = document.querySelector('#create-task');
+newTaskForm.addEventListener('submit', createNewTask);
 
-if (!cache) {
-    cache = {};
-    cache[DEFAULT_PROJECT.id] = DEFAULT_PROJECT;
+function createNewTask(event) {
+  event.preventDefault();
+  const taskInputField = event.target[0];
+  const taskObject = new Task(taskInputField.value, view.currentProject);
+  view.addTask(taskObject);
+  data.saveTask(taskObject);
+  view.calculateRemainingTasks();
+  taskInputField.value = '';
 }
 
-window.addEventListener('click', () => {
-    localStorage.setItem('cache', JSON.stringify(cache));
-})
-
-let currentProject = cache[DEFAULT_PROJECT.id];
+view.renderProjectTasks();
+view.calculateRemainingTasks();
 

@@ -6,7 +6,7 @@ if (!cache) {
 
 console.log(JSON.stringify(cache));
 
-window.addEventListener('click', () => {
+window.addEventListener('beforeunload', () => {
     localStorage.setItem('cache', JSON.stringify(cache));
 })
 
@@ -312,3 +312,15 @@ function gatherAllTasks() {
     document.querySelector('.list-title').innerText = currentProject.title;
     countRemainigTasks(allTasks);
 }
+
+function getAllTasksList() {
+    let allTasks = [];
+    Object.values(cache).forEach(
+      (project) => {
+        allTasks = allTasks.concat(Object.values(project.taskList));
+      },
+    );
+  
+    return allTasks;
+  }
+  
