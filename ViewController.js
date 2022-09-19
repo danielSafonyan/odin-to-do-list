@@ -15,6 +15,8 @@ class ViewController {
 
     updateCurrentProject(currentProjectID) {
         this.currentProjectID = currentProjectID;
+        console.log("i am ", ViewController, 'my current project is');
+    console.log(this.currentProjectID)
       }
 
     addTask(taskObject) {
@@ -87,6 +89,10 @@ function taskClickEvent(event) {
     view.calculateRemainingTasks();
   }
 
+
+  const allTasksProject = document.querySelector('#all-tasks');
+  allTasksProject.addEventListener('click', projectClickEvent);
+
   function projectClickEvent(event) {
     event.preventDefault();
     // what is data.currentProject
@@ -94,11 +100,12 @@ function taskClickEvent(event) {
         console.log("the same project");
         return;
     }
-    const currentProjectDisplayed = document.querySelector(`#${view[this.currentProjectID]}`);
+    const currentProjectDisplayed = document.querySelector(`#${currentProject.currentProjectID}`);
+    console.log(`#${currentProject.currentProjectID}`);
     currentProjectDisplayed.classList.remove('active-project');
     const newProjectDisplayed = document.querySelector(`#${event.currentTarget.id}`);
     newProjectDisplayed.classList.add('active-project');
-    data[this.currentProjectI] = event.currentTarget.id;
+    currentProject.currentProjectID = event.currentTarget.id;
   }
 
 const view = new ViewController(); 

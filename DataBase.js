@@ -20,6 +20,8 @@ class DataBase {
   }
   updateCurrentProject(currentProjectID) {
     this.currentProjectID = currentProjectID;
+    console.log("i am ", DataBase, 'my current project is');
+    console.log(this.currentProjectID)
   }
   saveTask(taskObject) {
     this.cache[taskObject.projectID].taskList[taskObject.id] = taskObject;
@@ -32,7 +34,6 @@ class DataBase {
   clearCompletedTasks(completedTasks) {
         completedTasks.forEach(
             task => {
-              console.log(this.cache[task.projectID].taskList);
               delete this.cache[task.projectID].taskList[task.id];
             }
         )
@@ -44,6 +45,6 @@ class DataBase {
 }
 
 const data = new DataBase(); 
-Object.seal(data);
+// Object.seal(data);
 currentProject.subscribe(data);
 export default data;

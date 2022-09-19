@@ -38,7 +38,7 @@ function createNewProject(event) {
   const projectObject = new Project(projectInputField.value);
   view.addProject(projectObject);
   // data.saveProject(projectObject);
-  // taskInputField.value = '';
+  projectInputField.value = '';
 }
 
 view.renderProjectTasks();
