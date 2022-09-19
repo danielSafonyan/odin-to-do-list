@@ -23,7 +23,7 @@ class CurrentProjectObserver {
 
     notifyAll() {
         this.subscribers.forEach(
-            () => console.log("Something changed."),
+            (subscriber) => subscriber.currentProjectID = this._currentProjectID,
         )
     }
 
@@ -40,4 +40,4 @@ class CurrentProjectObserver {
 
 const currentProject = new CurrentProjectObserver(); 
 Object.seal(currentProject);
-// export default currentProject;
+export default currentProject;

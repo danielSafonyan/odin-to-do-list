@@ -228,6 +228,7 @@ function saveProject(projectObject) {
 
 
 function changeCurrentProject(event) {
+    // what is 
     if (currentProject.id === event.currentTarget.id) {
         console.log("the same project");
         return;
