@@ -27,6 +27,14 @@ class DataBase {
     this.cache[taskObject.projectID].taskList[taskObject.id] = taskObject;
     this.saveState();
   }
+  saveProject(projectObject) {
+    this.cache[projectObject.id] = projectObject;
+    this.saveState();
+  }
+  deleteProject() {
+    delete this.cache[currentProject.currentProjectID];
+    this.saveState();
+  }
   changeIsDoneStatus(projectID, taskid, isDoneStatus) {
     this.cache[projectID].taskList[taskid].isDone = isDoneStatus;
     this.saveState();

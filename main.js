@@ -24,7 +24,20 @@ const clearCompletedTasksBtn = document.querySelector('#clear-tasks');
 clearCompletedTasksBtn.addEventListener('click', clearCompletedTasks);
 
 function clearCompletedTasks() {
-  const completedTasks = Object.values(data.cache[currentProject.currentProjectID].taskList).filter(task => task.isDone == true);
+  let completedTasks = [];
+  if (currentProject.currentProjectID === 'all-tasks') {
+      const allProjects = Object.values(data.cache);
+      
+      allProjects.forEach(
+          project => {
+            completedTasks = completedTasks.concat(Object.values(project.taskList));
+          },
+      )
+      completedTasks = completedTasks.filter(task => task.isDone == true);
+  } else {
+    completedTasks = Object.values(data.cache[currentProject.currentProjectID].taskList).filter(task => task.isDone == true);
+  }
+  
   data.clearCompletedTasks(completedTasks);
   view.clearCompletedTasks(completedTasks);
 }
@@ -36,11 +49,38 @@ function createNewProject(event) {
   event.preventDefault();
   const projectInputField = event.target[0];
   const projectObject = new Project(projectInputField.value);
-  view.addProject(projectObject);
-  // data.saveProject(projectObject);
+  view.renderProject(projectObject);
+  data.saveProject(projectObject);
   projectInputField.value = '';
 }
 
-view.renderProjectTasks();
+const deleteProjectBtn = document.querySelector('#delete-project');
+deleteProjectBtn.addEventListener('click', deleteProject);
+function deleteProject() {
+  if (currentProject.currentProjectID === 'all-tasks') {
+    return;
+  }
+
+  // delete project from  the  db
+  data.deleteProject();
+  // switch to 'all-tasks' project.
+  // rewnder all the stuff 
+  switchToDefaultProject();
+}
+
 view.calculateRemainingTasks();
+view.renderAllProjects();
+view.renderAllTasks()
+
+
+// helper function - move all intoi a separate module
+function switchToDefaultProject() {
+  const currentProjectDisplayed = document.querySelector(`#${currentProject.currentProjectID}`).remove();
+  const newProjectDisplayed = document.querySelector(`#all-tasks`);
+  newProjectDisplayed.classList.add('active-project');
+  currentProject.currentProjectID = 'all-tasks';
+  view.calculateRemainingTasks();
+  view.removeAllTasks()
+  view.renderAllTasks()
+}
 

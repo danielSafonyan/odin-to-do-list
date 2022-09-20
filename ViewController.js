@@ -4,7 +4,7 @@ import currentProject from './CurrentProjectObserver.js';
 class ViewController {
     constructor() {
         if (ViewController.instance == null) {
-            this.currentProjectID = 'all-tasks'
+            this.currentProjectID = 'all-tasks';
             this.taskArea = document.querySelector('.tasks');
             this.remainingTasksArea = document.querySelector('#remaining-tasks');
             this.projectArea = document.querySelector('.dynamic.project-list');
@@ -56,10 +56,50 @@ class ViewController {
         allTasks.forEach(task => this.addTask(task));
         document.querySelector('.list-title').innerText = data.cache[this.currentProjectID].title;
     }
+    renderAllProjects() {
+        const allProjects = Object.values(data.cache);
+        allProjects.forEach(project => {
+            if (project.id === 'all-tasks') {
+                return;
+            }
+            this.renderProject(project)
+        });
+    }
+    renderAllTasks() {
+        this.removeAllTasks();
+        let allTasks = [];
+        const allProjects = Object.values(data.cache);
+        
+        allProjects.forEach(
+            project => {
+                allTasks = allTasks.concat(Object.values(project.taskList));
+            },
+        )
+
+        // allTasks = Object.values(data.cache[this.currde .entProjectID].taskList);
+        allTasks.forEach(task => this.addTask(task));
+        document.querySelector('.list-title').innerText = data.cache[this.currentProjectID].title;
+    }
+
     calculateRemainingTasks() {
-        const numRemainingTasks = Object.values(data.cache[this.currentProjectID].taskList).filter(task => task.isDone == false).length;
+        let numRemainingTasks;
+        if (this.currentProjectID === 'all-tasks') {
+            let allTasks = [];
+            const allProjects = Object.values(data.cache);
+            
+            allProjects.forEach(
+                project => {
+                    allTasks = allTasks.concat(Object.values(project.taskList));
+                },
+            )
+            numRemainingTasks = allTasks.filter(task => task.isDone == false).length;
+        } else {
+            numRemainingTasks = Object.values(data.cache[this.currentProjectID].taskList).filter(task => task.isDone == false).length;
+
+        }
         this.remainingTasksArea.innerText = numRemainingTasks;
     }
+
     clearCompletedTasks(completedTasks) {
         completedTasks.forEach(
             task => {
@@ -67,7 +107,7 @@ class ViewController {
             }
         )
     }
-    addProject(projectObject) {
+    renderProject(projectObject) {
         const li = document.createElement('li');
         li.classList.add('project');
         li.setAttribute('id', projectObject.id);
@@ -95,8 +135,7 @@ function taskClickEvent(event) {
 
   function projectClickEvent(event) {
     event.preventDefault();
-    // what is data.currentProject
-    if (data[this.currentProjectI] === event.currentTarget.id) {
+    if (view.currentProjectID === event.currentTarget.id) {
         console.log("the same project");
         return;
     }
@@ -106,6 +145,13 @@ function taskClickEvent(event) {
     const newProjectDisplayed = document.querySelector(`#${event.currentTarget.id}`);
     newProjectDisplayed.classList.add('active-project');
     currentProject.currentProjectID = event.currentTarget.id;
+    view.calculateRemainingTasks();
+    view.removeAllTasks()
+    if (currentProject.currentProjectID === 'all-tasks') {
+        view.renderAllTasks();
+    } else {
+        view.renderProjectTasks(); 
+    }
   }
 
 const view = new ViewController(); 
