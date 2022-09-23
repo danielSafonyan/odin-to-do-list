@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odin To Do</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./main.js" defer></script>
+</head>
+<body>
+    <div id="container">
+
+        <div class="all-tasks">
+            <div class="inboxes">
+                <ul class="project-list">
+                    <li class="project active-project" id="all-tasks">All Tasks</li>
+                    <!-- <li class="project" id="today">Today</li>
+                    <li class="project" id="this-week">This Week</li> -->
+                </ul>
+            </div>
+            <div class="projects">
+                <h2 class="project-list-title">My Projects</h2>
+            <ul class="dynamic project-list">
+                <!-- <li class="project" id="programming">Programming</li>
+                <li class="project active-project" id="spanish">Spanish</li>
+                <li class="project" id="health-&-fitness">Health & Fitness</li> -->
+            </ul>
+            <form action="" id="create-project" autocomplete="off">
+                <input 
+                type="text"
+                class="new list"
+                placeholder="new project name"
+                aria-label="new project name"
+                required name="project"/>
+                <button  class="btn create" aria-label="create new project" type="button">+</button>
+            </form>
+            </div>
+        </div>
+        <div class="todo-list">
+            <div class="todo-header">
+                <h2 class="list-title">All Tasks</h2>
+                <p class="task-count">Remaining Tasks: <span id="remaining-tasks"></span></p>
+            </div>
+            <div class="todo-body">
+                <div class="tasks">
+                    <!-- <div class="task">
+                        <input 
+                        type="checkbox"
+                        id="task-1"
+                        />
+                        <label for="task-1"><span class="custom-checkbox"></span>Finish todo list</label>
+                    </div>
+                    <div class="task">
+                        <input 
+                        type="checkbox"
+                        id="task-2"
+                        />
+                        <label for="task-2"><span class="custom-checkbox"></span>Create a portfolio</label>
+                    </div>
+                    <div class="task">
+                        <input 
+                        type="checkbox"
+                        id="task-3"
+                        />
+                        <label for="task-3"><span class="custom-checkbox"></span>Get a job</label>
+                    </div>
+                -->
+                </div>
+                <div class="new-task-creator">
+                    <form action="" id="create-task" autocomplete="off">
+                        <input 
+                        type="text"
+                        class="new"
+                        placeholder="new task name"
+                        aria-label="new task name"
+                        name="task"
+                        required
+                        />
+                        <button class="btn create" aria-label="create new task">+</button>
+                    </form>
+                </div>
+                <div class="delete-list-tasks">
+                    <button class="btn delete" id="clear-tasks">clear completed tasks</button>
+                    <button class="btn delete" id="delete-project">delete a project</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

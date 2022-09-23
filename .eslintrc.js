@@ -10,7 +10,5 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
-  rules: {
-    'import/extensions': 'never',
-  },
+  rules: {},
 };
