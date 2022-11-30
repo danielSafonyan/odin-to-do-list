@@ -214,3 +214,43 @@
   .delete-list-tasks:hover {
     opacity: 1;
   }
+
+  @media screen and (max-width: 768px) {
+
+    #container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+      }
+    .project-list-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .all-tasks {
+      margin-bottom: 1rem;
+    }
+    .active-project {
+      max-width: 100%;
+    }
+    .new {
+      order: 0;
+      width: 100%;
+    }
+    .todo-header {
+      flex-direction: column;
+      padding: 0;
+    }
+    .list-title {
+      margin: 0.5rem 0 0;
+    }
+    .task-count {
+      margin: 0 0 0.5rem;
+    }
+    .new.list {
+      font-size: inherit;
+    }
+    .btn {
+      font-size: 1rem;
+    }
+    }
