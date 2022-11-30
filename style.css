@@ -24,7 +24,7 @@
     grid: 
     "header header header header" 150px
     "...... lists active ......." auto /
-    1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
+    1fr minmax(100px, 300px) minmax(250px, 600px) 1fr;
   }
 
   form {
@@ -135,6 +135,10 @@
 
   .new.list {
     font-size: 1.1rem;
+  }
+
+  .new-task {
+    width: 100%;
   }
 
   .new:focus {
