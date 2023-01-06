@@ -6,6 +6,8 @@ function Todos(props) {
     const [newTaskInput, setNewTaskInput] = React.useState('')
     const remainingTasks = props.taskList.filter(el => !el.isDone).length
 
+    const isDefaultProject = props.currentProject === 'All Tasks' || props.currentProject === 'For Today'
+
     function handleTaskSubmit(event) {
         event.preventDefault()
         const newTask = newTaskInput.trim()
@@ -54,7 +56,7 @@ function Todos(props) {
     function clearCompletedTasks() {
         props.setData(prev => {
             const newData = {...prev}
-            if (props.currentProject === 'All Tasks' || props.currentProject === 'For Today')  {
+            if (isDefaultProject)  {
                 Object.values(prev).forEach(project => {
                     Object.values(project).forEach(task => {
                         if (task.isDone) {
@@ -73,7 +75,7 @@ function Todos(props) {
     function deleteProject() {
         props.setData(prev => {
             const newData = {...prev}
-            if (props.currentProject === 'All Tasks' || props.currentProject === 'For Today')  {
+            if (isDefaultProject)  {
                 return prev
             } else {
                 props.setCurrentProject('All Tasks')
@@ -121,10 +123,10 @@ function Todos(props) {
                     className="btn delete"
                     onClick={clearCompletedTasks}
                     >clear completed tasks</button>
-                    <button 
+                    {!isDefaultProject && <button 
                     className="btn delete" 
                     onClick={deleteProject}
-                    >delete a project</button>
+                    >delete a project</button>}
                 </div>
             </div>
         </div>

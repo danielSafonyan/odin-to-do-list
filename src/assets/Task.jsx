@@ -2,14 +2,21 @@ import React from 'react'
 
 function Task(props) {
 
-    console.log(props.isForToday)
 
     function copyClickHandler(text) {
           navigator.clipboard.writeText(text);
     }
 
+    function deleteClickHandler(parentProject, taskId) {
+        props.setData(prev => {
+            const newData = {...prev}
+            delete newData[parentProject][taskId]
+            return newData
+        })
+    }
+
+
     function toggleIsForToday(parentProject, taskId) {
-        console.log("Toggling", taskId, "from", parentProject)
         props.setData(prev => {
             const newData = {...prev}
             if (parentProject !== 'For Today') {
@@ -43,7 +50,12 @@ function Task(props) {
                 <i 
                     className="fas fa-copy" 
                     onClick={() => copyClickHandler(props.value)}
-                ></i></div>
+                ></i>
+                <i 
+                className="fa-solid fa-trash-can"
+                onClick={() => deleteClickHandler(props.parentProject, props.id)}
+                ></i>
+                </div>
         </div>
         )
 }

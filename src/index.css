@@ -245,9 +245,10 @@ form:focus {
     cursor: pointer;
 }
 
-.fa-paperclip {
+.fa-paperclip, .fa-trash-can {
   opacity: 0.3; 
 }
+
 
 .for-today {
   opacity: 1;
@@ -257,7 +258,7 @@ form:focus {
   opacity: 0.3;
 }
 
-.fa-copy:active {
+.fa-copy:active, .fa-trash-can:active {
   opacity: 1;
 }
 
