@@ -16,12 +16,19 @@ function Todos(props) {
             const updatedData = {
                 ...prev
             }
-            const newTaskObject = {
+            
+             const newTaskObject = {
                 id: uuidv4(),
                 isDone: false,
                 value:  newTask,
-                parentProject: props.currentProject
+                parentProject: props.currentProject,
+                isForToday: false
             }
+
+            if (props.currentProject === 'For Today') {
+                newTaskObject.isForToday = true
+            }
+
             updatedData[props.currentProject] = {
                 ...updatedData[props.currentProject],
                 [newTaskObject.id] : newTaskObject
@@ -47,7 +54,7 @@ function Todos(props) {
     function clearCompletedTasks() {
         props.setData(prev => {
             const newData = {...prev}
-            if (props.currentProject === 'All Tasks')  {
+            if (props.currentProject === 'All Tasks' || props.currentProject === 'For Today')  {
                 Object.values(prev).forEach(project => {
                     Object.values(project).forEach(task => {
                         if (task.isDone) {
@@ -80,6 +87,7 @@ function Todos(props) {
                         key={el.id}
                         {...el}
                         clickHandler={(event) => toggleIsDone(el.id, event)}
+                        setData={props.setData}
                             />)
     return (
         <div className="todo-list">

@@ -244,6 +244,14 @@ form:focus {
     cursor: pointer;
 }
 
+.fa-paperclip {
+  opacity: 0.3; 
+}
+
+.for-today {
+  opacity: 1;
+}
+
 .fa-copy {
   opacity: 0.3;
 }

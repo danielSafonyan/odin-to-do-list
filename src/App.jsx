@@ -16,7 +16,22 @@ function App() {
       return allTasks.flat()
   }
 
-  const taskList = currentProject === 'All Tasks' ? getAllTasks() : Object.values(data[currentProject])
+  function getTasksForToday() {
+    const allTasks = []
+      Object.values(data).forEach(project => {
+          Object.values(project).forEach(task => {
+            console.log(task)
+              if (task.isForToday) {
+                allTasks.push(task)
+              }
+          })
+      })
+      return allTasks
+}
+
+  const taskList = currentProject === 'All Tasks' ? getAllTasks() : 
+                   currentProject === 'For Today' ? getTasksForToday() :
+  Object.values(data[currentProject])
 
   return (
           <div id='container'>
