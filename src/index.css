@@ -180,6 +180,7 @@ form:focus {
 }
 
 .custom-checkbox {
+  flex-shrink: 0;
   --size: 1rem;
   display: inline-block;
   width: var(--size);
