@@ -22,7 +22,7 @@ function Task(props) {
             className="custom-checkbox" 
             data-parent-project={props.parentProject}
             ></span>{props.value}</label>
-            <div className='task-interactions-container'><i class="fa-solid fa-paperclip"></i><i class="fas fa-copy" onClick={() => copyClickHandler(props.value)}></i></div>
+            <div className='task-interactions-container'><i className="fa-solid fa-paperclip"></i><i className="fas fa-copy" onClick={() => copyClickHandler(props.value)}></i></div>
         </div>
         )
 }
