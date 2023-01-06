@@ -225,7 +225,10 @@ form:focus {
   opacity: 1;
 }
 
+
+
 .task-interactions-container {
+  opacity: 0;
   margin-left: auto;
   display: flex;
   align-items: center;
@@ -233,12 +236,20 @@ form:focus {
   font-size: 1rem;
 }
 
+.task:hover .task-interactions-container {
+  opacity: 1;
+}
+
 .task-interactions-container > * {
     cursor: pointer;
 }
 
-.fa-copy:active {
+.fa-copy {
   opacity: 0.3;
+}
+
+.fa-copy:active {
+  opacity: 1;
 }
 
 @media screen and (max-width: 768px) {
