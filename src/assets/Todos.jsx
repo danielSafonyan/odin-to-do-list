@@ -47,7 +47,7 @@ function Todos(props) {
     function clearCompletedTasks() {
         props.setData(prev => {
             const newData = {...prev}
-            if (props.currentProject === 'all-tasks')  {
+            if (props.currentProject === 'All Tasks')  {
                 Object.values(prev).forEach(project => {
                     Object.values(project).forEach(task => {
                         if (task.isDone) {
@@ -66,10 +66,10 @@ function Todos(props) {
     function deleteProject() {
         props.setData(prev => {
             const newData = {...prev}
-            if (props.currentProject === 'all-tasks')  {
+            if (props.currentProject === 'All Tasks' || props.currentProject === 'For Today')  {
                 return prev
             } else {
-                props.setCurrentProject('all-tasks')
+                props.setCurrentProject('All Tasks')
                 delete newData[props.currentProject]
             }
             return newData
