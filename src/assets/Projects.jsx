@@ -4,7 +4,7 @@ function Projects(props) {
     const [newProjectInput, setNewProjectInput] = React.useState('')
 
     const projectListElems = props.projectList.map(el => {
-        if (!(el === 'all-tasks')) {
+        if (!(el === 'All Tasks' || el === 'For Today')) {
             return <li 
                     key={el}
                     className={`project ${props.currentProject === el ? "active-project" : ''}`} data-project-name={el}
@@ -43,10 +43,15 @@ function Projects(props) {
             <div className="inboxes">
                 <ul className="project-list">
                     <li 
-                    className={`project ${props.currentProject === 'all-tasks' ? "active-project" : ''}`}
-                    data-project-name="all-tasks"
-                    onClick={() => handleProjectClick('all-tasks')}
+                    className={`project ${props.currentProject === 'All Tasks' ? "active-project" : ''}`}
+                    data-project-name="All Tasks"
+                    onClick={() => handleProjectClick('All Tasks')}
                     >All Tasks</li>
+                    <li 
+                    className={`project ${props.currentProject === 'For Today' ? "active-project" : ''}`}
+                    data-project-name="For Today"
+                    onClick={() => handleProjectClick('For Today')}
+                    >For Today</li>
                 </ul>
             </div>
             <div className="projects">

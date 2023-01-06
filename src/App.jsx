@@ -3,8 +3,8 @@ import Projects from './assets/Projects'
 import Todos from './assets/Todos'
 
 function App() {
-  const [data, setData] = useState(() => JSON.parse(localStorage.getItem('cache')) || {'all-tasks' : {}})
-  const [currentProject, setCurrentProject] = useState('all-tasks')
+  const [data, setData] = useState(() => JSON.parse(localStorage.getItem('cache')) || {'All Tasks' : {}, 'For Today': {}})
+  const [currentProject, setCurrentProject] = useState('All Tasks')
 
   useEffect(() => localStorage.setItem('cache', JSON.stringify(data)), [data])
   
@@ -16,7 +16,7 @@ function App() {
       return allTasks.flat()
   }
 
-  const taskList = currentProject === 'all-tasks' ? getAllTasks() : Object.values(data[currentProject])
+  const taskList = currentProject === 'All Tasks' ? getAllTasks() : Object.values(data[currentProject])
 
   return (
           <div id='container'>
