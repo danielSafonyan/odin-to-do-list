@@ -164,11 +164,11 @@ form:focus {
   align-items: center;
   gap: 10px;
   position: relative;
-  margin-bottom: 20px;
   cursor: pointer;
+  flex: 1;
 }
 
-.task label::after {
+.task::after {
   content: "";
   position: absolute;
   background-color: currentColor;
@@ -188,6 +188,14 @@ form:focus {
   border-radius: 50%;
   transform: scale(1);
   transition: transform 300ms ease-in-out;
+}
+
+.task {
+  display: flex;
+  position: relative;
+  /* border: 1px solid;
+  border-color: var(--clr-dark); */
+  margin-bottom: 20px;
 }
 
 .task:hover .custom-checkbox,
@@ -215,6 +223,22 @@ form:focus {
 
 .delete-list-tasks:hover {
   opacity: 1;
+}
+
+.task-interactions-container {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+.task-interactions-container > * {
+    cursor: pointer;
+}
+
+.fa-copy:active {
+  opacity: 0.3;
 }
 
 @media screen and (max-width: 768px) {

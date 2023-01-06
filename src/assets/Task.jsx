@@ -1,6 +1,11 @@
 import React from 'react'
 
 function Task(props) {
+
+    function copyClickHandler(text) {
+          navigator.clipboard.writeText(text);
+    }
+
     return (
         <div className="task">
             <input 
@@ -17,6 +22,7 @@ function Task(props) {
             className="custom-checkbox" 
             data-parent-project={props.parentProject}
             ></span>{props.value}</label>
+            <div className='task-interactions-container'><i class="fa-solid fa-paperclip"></i><i class="fas fa-copy" onClick={() => copyClickHandler(props.value)}></i></div>
         </div>
         )
 }
