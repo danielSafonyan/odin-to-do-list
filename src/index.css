@@ -254,6 +254,10 @@ form:focus {
 
 @media screen and (max-width: 768px) {
 
+  .task-interactions-container {
+      opacity: 1;
+    }
+
   #container {
     display: flex;
     flex-direction: column;
