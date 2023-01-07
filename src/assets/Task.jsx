@@ -44,16 +44,16 @@ function Task(props) {
             ></span>{props.value}</label>
             <div className='task-interactions-container'>
                 <i 
-                    className={`fa-solid fa-paperclip ${props.isForToday ? "for-today" : ""}`}
-                    onClick={() => toggleIsForToday(props.parentProject, props.id)}
-                ></i>
-                <i 
                     className="fas fa-copy" 
                     onClick={() => copyClickHandler(props.value)}
                 ></i>
                 <i 
                 className="fa-solid fa-trash-can"
                 onClick={() => deleteClickHandler(props.parentProject, props.id)}
+                ></i>
+                <i 
+                    className={`fa-solid fa-paperclip ${props.isForToday ? "for-today" : ""}`}
+                    onClick={() => toggleIsForToday(props.parentProject, props.id)}
                 ></i>
                 </div>
         </div>

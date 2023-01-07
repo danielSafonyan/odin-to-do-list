@@ -6,7 +6,8 @@ function Todos(props) {
     const [newTaskInput, setNewTaskInput] = React.useState('')
     const remainingTasks = props.taskList.filter(el => !el.isDone).length
 
-    const isDefaultProject = props.currentProject === 'All Tasks' || props.currentProject === 'For Today'
+    const defaultProjects = Object.values(props.DEFAULT_PROJECTS)
+    const isDefaultProject = defaultProjects.includes(props.currentProject)
 
     function handleTaskSubmit(event) {
         event.preventDefault()
@@ -27,7 +28,7 @@ function Todos(props) {
                 isForToday: false
             }
 
-            if (props.currentProject === 'For Today') {
+            if (props.currentProject === props.DEFAULT_PROJECTS.FOR_TODAY) {
                 newTaskObject.isForToday = true
             }
 
@@ -78,7 +79,7 @@ function Todos(props) {
             if (isDefaultProject)  {
                 return prev
             } else {
-                props.setCurrentProject('All Tasks')
+                props.setCurrentProject(props.DEFAULT_PROJECTS.ALL_TASKS)
                 delete newData[props.currentProject]
             }
             return newData

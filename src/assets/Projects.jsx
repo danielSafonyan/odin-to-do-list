@@ -4,7 +4,8 @@ function Projects(props) {
     const [newProjectInput, setNewProjectInput] = React.useState('')
 
     const projectListElems = props.projectList.map(el => {
-        if (!(el === 'All Tasks' || el === 'For Today')) {
+        const defaultProjects = Object.values(props.DEFAULT_PROJECTS)
+        if (!defaultProjects.includes(el)) {
             return <li 
                     key={el}
                     className={`project ${props.currentProject === el ? "active-project" : ''}`} data-project-name={el}
@@ -42,16 +43,17 @@ function Projects(props) {
          <div className="all-tasks"> 
             <div className="inboxes">
                 <ul className="project-list">
+                    {/* NOT DRY - REWRITE */}
                     <li 
-                    className={`project ${props.currentProject === 'All Tasks' ? "active-project" : ''}`}
-                    data-project-name="All Tasks"
-                    onClick={() => handleProjectClick('All Tasks')}
-                    >All Tasks</li>
+                    className={`project ${props.currentProject === props.DEFAULT_PROJECTS.ALL_TASKS ? "active-project" : ''}`}
+                    data-project-name={props.DEFAULT_PROJECTS.ALL_TASKS}
+                    onClick={() => handleProjectClick(props.DEFAULT_PROJECTS.ALL_TASKS)}
+                    >{props.DEFAULT_PROJECTS.ALL_TASKS}</li>
                     <li 
-                    className={`project ${props.currentProject === 'For Today' ? "active-project" : ''}`}
-                    data-project-name="For Today"
-                    onClick={() => handleProjectClick('For Today')}
-                    >For Today</li>
+                    className={`project ${props.currentProject === props.DEFAULT_PROJECTS.FOR_TODAY ? "active-project" : ''}`}
+                    data-project-name={props.DEFAULT_PROJECTS.FOR_TODAY}
+                    onClick={() => handleProjectClick(props.DEFAULT_PROJECTS.FOR_TODAY)}
+                    >{props.DEFAULT_PROJECTS.FOR_TODAY}</li>
                 </ul>
             </div>
             <div className="projects">

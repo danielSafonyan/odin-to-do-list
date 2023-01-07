@@ -226,10 +226,7 @@ form:focus {
   opacity: 1;
 }
 
-
-
 .task-interactions-container {
-  opacity: 0;
   margin-left: auto;
   display: flex;
   align-items: center;
@@ -237,29 +234,24 @@ form:focus {
   font-size: 1rem;
 }
 
-.task:hover .task-interactions-container {
-  opacity: 1;
+.task-interactions-container > * {
+  opacity: 0;
 }
 
 .task-interactions-container > * {
     cursor: pointer;
 }
 
-.fa-paperclip, .fa-trash-can {
+.task:hover .fa-paperclip, .task:hover .fa-trash-can, .task:hover .fa-copy {
   opacity: 0.3; 
 }
 
+.fa-copy:active, .fa-trash-can:active {
+  opacity: 1 !important;
+}
 
 .for-today {
-  opacity: 1;
-}
-
-.fa-copy {
-  opacity: 0.3;
-}
-
-.fa-copy:active, .fa-trash-can:active {
-  opacity: 1;
+  opacity: 1 !important;
 }
 
 @media screen and (max-width: 768px) {
