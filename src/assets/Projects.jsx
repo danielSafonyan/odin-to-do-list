@@ -3,16 +3,23 @@ import React from 'react'
 function Projects(props) { 
     const [newProjectInput, setNewProjectInput] = React.useState('')
 
+    {/* NOT DRY - REFACTOR */}
+    const defaultProjectListElems = Object.values(props.DEFAULT_PROJECTS).map(el => getProjectEl(el))
+
     const projectListElems = props.projectList.map(el => {
-        const defaultProjects = Object.values(props.DEFAULT_PROJECTS)
-        if (!defaultProjects.includes(el)) {
-            return <li 
-                    key={el}
-                    className={`project ${props.currentProject === el ? "active-project" : ''}`} data-project-name={el}
-                    onClick={() => handleProjectClick(el)}
-                    >{el}</li>
+        const isDefaultProject = Object.values(props.DEFAULT_PROJECTS).includes(el)
+        if (!isDefaultProject) {
+            return getProjectEl(el)
         }
     })
+
+    function getProjectEl(projectName) {
+        return <li 
+                    key={projectName}
+                    className={`project ${props.currentProject === projectName ? "active-project" : ''}`} data-project-name={projectName}
+                    onClick={() => handleProjectClick(projectName)}
+                    >{projectName}</li>
+    }
 
     function handleProjectClick(project) {
         props.setCurrentProject(project)
@@ -43,17 +50,7 @@ function Projects(props) {
          <div className="all-tasks"> 
             <div className="inboxes">
                 <ul className="project-list">
-                    {/* NOT DRY - REFACTOR */}
-                    <li 
-                    className={`project ${props.currentProject === props.DEFAULT_PROJECTS.ALL_TASKS ? "active-project" : ''}`}
-                    data-project-name={props.DEFAULT_PROJECTS.ALL_TASKS}
-                    onClick={() => handleProjectClick(props.DEFAULT_PROJECTS.ALL_TASKS)}
-                    >{props.DEFAULT_PROJECTS.ALL_TASKS}</li>
-                    <li 
-                    className={`project ${props.currentProject === props.DEFAULT_PROJECTS.FOR_TODAY ? "active-project" : ''}`}
-                    data-project-name={props.DEFAULT_PROJECTS.FOR_TODAY}
-                    onClick={() => handleProjectClick(props.DEFAULT_PROJECTS.FOR_TODAY)}
-                    >{props.DEFAULT_PROJECTS.FOR_TODAY}</li>
+                    {defaultProjectListElems}
                 </ul>
             </div>
             <div className="projects">
