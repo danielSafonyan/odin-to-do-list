@@ -14,11 +14,14 @@ function Projects(props) {
     })
 
     function getProjectEl(projectName) {
+        const className = `project ${props.currentProject === projectName ? "active-project" : ''}`
         return <li 
                     key={projectName}
-                    className={`project ${props.currentProject === projectName ? "active-project" : ''}`} data-project-name={projectName}
+                    className={className} 
+                    data-project-name={projectName}
                     onClick={() => handleProjectClick(projectName)}
-                    >{projectName}</li>
+                    >{projectName}
+                </li>
     }
 
     function handleProjectClick(project) {
