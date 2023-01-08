@@ -43,7 +43,7 @@ function Projects(props) {
          <div className="all-tasks"> 
             <div className="inboxes">
                 <ul className="project-list">
-                    {/* NOT DRY - REWRITE */}
+                    {/* NOT DRY - REFACTOR */}
                     <li 
                     className={`project ${props.currentProject === props.DEFAULT_PROJECTS.ALL_TASKS ? "active-project" : ''}`}
                     data-project-name={props.DEFAULT_PROJECTS.ALL_TASKS}
