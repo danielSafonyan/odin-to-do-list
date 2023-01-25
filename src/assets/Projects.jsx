@@ -3,7 +3,6 @@ import React from 'react'
 function Projects(props) { 
     const [newProjectInput, setNewProjectInput] = React.useState('')
 
-    {/* NOT DRY - REFACTOR */}
     const defaultProjectListElems = Object.values(props.DEFAULT_PROJECTS).map(el => getProjectEl(el))
 
     const projectListElems = props.projectList.map(el => {
